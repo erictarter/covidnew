@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 export const Main = () => {
   const [states, setStates] = useState([]);
@@ -60,9 +61,18 @@ export const Main = () => {
       </div>
       <div className='states'>
         {states.map((i, index) => (
-          <button onClick={showData} className='state-btn' key={index}>
+          <Link
+            onClick={showData}
+            className='state-btn'
+            key={index}
+            to='link-1'
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
             {i.state}
-          </button>
+          </Link>
         ))}
       </div>
       <h2 className='state-selected'>OR</h2>
@@ -74,7 +84,7 @@ export const Main = () => {
         <div className='cases'>Total Cases</div>
         <div className='cases-data data-num'></div>
         <div className='deaths'>Total Deaths</div>
-        <div className='deaths-data data-num'></div>
+        <div className='deaths-data data-num' id='link-1'></div>
       </div>
     </div>
   );
